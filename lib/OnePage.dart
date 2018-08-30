@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterdemo/AppBarBottomSample.dart';
 import 'package:flutterdemo/BasicAppBarSample.dart';
 import 'package:flutterdemo/BottomNavigationBarDemo.dart';
+import 'package:flutterdemo/CameraDemo.dart';
 import 'package:flutterdemo/FourPage.dart';
 import 'package:flutterdemo/ListTextDemo.dart';
 import 'package:flutterdemo/LogoDemo.dart';
@@ -12,6 +13,11 @@ import 'package:flutterdemo/TabAppBarSimeple.dart';
 import 'package:flutterdemo/TabList.dart';
 import 'package:flutterdemo/TextField.dart';
 import 'package:flutterdemo/ThreePage.dart';
+import 'package:flutterdemo/TimePickerDemo.dart';
+import 'package:flutterdemo/lifeCycle.dart';
+import 'package:flutterdemo/demo3.dart';
+import 'package:flutterdemo/demo4.dart';
+import 'package:flutterdemo/shanglaxiala.dart';
 
 class OnePage extends StatelessWidget {
   @override
@@ -55,7 +61,7 @@ class OnePage extends StatelessWidget {
                 },
                 color: Colors.blue[400],
                 child: new Text(
-                  'tablist',
+                  'ThreePage',
                 )),
           ),
           new Padding(
@@ -226,6 +232,92 @@ class OnePage extends StatelessWidget {
                 color: Colors.blue[400],
                 child: new Text(
                   'StapperDemo',
+                )),
+          ),
+          new Padding(
+            padding: EdgeInsets.all(10.0),
+            child: new FlatButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      new MaterialPageRoute(builder: (context) {
+                        return new Demo2Page();
+                      }));
+                },
+                color: Colors.blue[400],
+                child: new Text(
+                  'Demo2Page',
+                )),
+          ),
+          new Padding(
+            padding: EdgeInsets.all(10.0),
+            child: new FlatButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      new MaterialPageRoute(builder: (context) {
+                        Person person = new Person("xiaoli",22);
+                        return new Demo3Page(person:person);
+                      }));
+                },
+                color: Colors.blue[400],
+                child: new Text(
+                  'Demo3Page',
+                )),
+          ),
+          new Padding(
+            padding: EdgeInsets.all(10.0),
+            child: new FlatButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      new MaterialPageRoute(builder: (context) {
+                        return new Demo4Page();
+                      }));
+                },
+                color: Colors.blue[400],
+                child: new Text(
+                  'Demo4Page',
+                )),
+          ),
+          new Padding(
+            padding: EdgeInsets.all(10.0),
+            child: new FlatButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      new MaterialPageRoute(builder: (context) {
+                        return new TimePickerDemo();
+                      }));
+                },
+                color: Colors.blue[400],
+                child: new Text(
+                  'DateTimePicker',
+                )),
+          ),
+          new Padding(
+            padding: EdgeInsets.all(10.0),
+            child: new FlatButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      new MaterialPageRoute(builder: (context) {
+                        return new ImagePickerDemo();
+                      }));
+                },
+                color: Colors.blue[400],
+                child: new Text(
+                  'ImagePickDemo',
+                )),
+          ),
+
+          new Padding(
+            padding: EdgeInsets.all(10.0),
+            child: new FlatButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      new MaterialPageRoute(builder: (context) {
+                        return new RefreshDemo();
+                      }));
+                },
+                color: Colors.blue[400],
+                child: new Text(
+                  'RefreshDemo',
                 )),
           ),
         ],

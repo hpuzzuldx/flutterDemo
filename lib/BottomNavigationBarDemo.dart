@@ -9,7 +9,7 @@ class BottomNavigationBarDemo extends StatefulWidget{
 }
 
 class _BottomNavigationState extends State<BottomNavigationBarDemo> {
-
+  var arraydata = ["home","bike","bus"];
   PageController _PageControl;
   int page = 0;
 
@@ -17,9 +17,9 @@ class _BottomNavigationState extends State<BottomNavigationBarDemo> {
   void initState() {
     super.initState();
     _PageControl = new PageController(initialPage: this.page);
-    items.add(new BottomNavigationBarItem(icon: new Icon(Icons.directions_car), title: new Text("home")));
-    items.add(new BottomNavigationBarItem(icon: new Icon(Icons.directions_bike), title: new Text("bike")));
-    items.add(new BottomNavigationBarItem(icon: new Icon(Icons.directions_bus), title: new Text("bus")));
+    items.add(new BottomNavigationBarItem(icon: new Icon(Icons.directions_car), title: new Text(arraydata[0])));
+    items.add(new BottomNavigationBarItem(icon: new Icon(Icons.directions_bike), title: new Text(arraydata[1])));
+    items.add(new BottomNavigationBarItem(icon: new Icon(Icons.directions_bus), title: new Text(arraydata[2])));
 
   }
 
@@ -41,9 +41,10 @@ class _BottomNavigationState extends State<BottomNavigationBarDemo> {
           currentIndex: page),
       body: new PageView(
         children: items.map((BottomNavigationBarItem itemdemo) {
+          BottomNavigationBarItem item = itemdemo;
           return new Padding(
             padding: const EdgeInsets.all(16.0),
-            child: new Text(itemdemo.title.toStringShort()),
+            child: getWidget(item),
           );
         }).toList(),
         onPageChanged: _onchanget,
@@ -63,5 +64,51 @@ class _BottomNavigationState extends State<BottomNavigationBarDemo> {
     _PageControl.animateToPage(
         value, duration: const Duration(milliseconds: 300),
         curve: Curves.ease);
+  }
+
+  Widget getWidget(BottomNavigationBarItem itemdemo) {
+    BottomNavigationBarItem item = itemdemo;
+    Widget widget;
+    Text text = item.title;
+    String clickstr = text.data;
+
+    print("================="+text.data);
+
+    if("home".contains(clickstr)){
+      widget = new Column(
+        children: <Widget>[
+          new Text("我是首页，home页面"),
+          new Text("我是首页，home页面"),
+          new Text("我是首页，home页面"),
+          new Text("我是首页，home页面"),
+          new Text("我是首页，home页面"),
+        ],
+      );
+
+    }else if( "bike".contains(clickstr)){
+      widget = new Column(
+        children: <Widget>[
+          new Text("我是bike页面"),
+          new Text("我是bike页面"),
+          new Text("我是bike页面"),
+          new Text("我是bike页面"),
+          new Text("我是bike页面"),
+        ],
+      );
+    }else{
+      widget = new Column(
+        children: <Widget>[
+          new Text("我是其他页面"),
+          new Text("我是其他页面"),
+          new Text("我是其他页面"),
+          new Text("我是其他页面"),
+          new Text("我是其他页面"),
+        ],
+      );
+    }
+    return new Container(
+      child: widget,
+    );
+
   }
 }

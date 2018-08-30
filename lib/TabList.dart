@@ -129,6 +129,27 @@ class ColorsDemo extends StatelessWidget {
         appBar: new AppBar(
           elevation: 0.0,
           title: const Text('Colors'),
+          actions: <Widget>[
+            new IconButton( // action button
+              icon: new Icon(Icons.person),
+              onPressed: () {  },
+            ),
+            new IconButton( // action button
+              icon: new Icon(Icons.map),
+              onPressed: () { },
+            ),
+            new PopupMenuButton<Choice1>( // overflow menu
+              onSelected: _select,
+              itemBuilder: (BuildContext context) {
+                return choices.skip(2).map((Choice1 choice) {
+                  return new PopupMenuItem<Choice1>(
+                    value: choice,
+                    child: new Text(choice.title),
+                  );
+                }).toList();
+              },
+            ),
+          ],
           bottom: new TabBar(
             isScrollable: true,
             tabs: allPalettes.map((Palette swatch) => new Tab(text: swatch.name)).toList(),
@@ -142,4 +163,23 @@ class ColorsDemo extends StatelessWidget {
       ),
     );
   }
+
+  void _select(Choice1 value) {
+  }
 }
+
+class Choice1 {
+  const Choice1({ this.title, this.icon });
+  final String title;
+  final IconData icon;
+}
+
+const List<Choice1> choices = const <Choice1>[
+  const Choice1(title: 'Car', icon: Icons.directions_car),
+  const Choice1(title: 'Bicycle', icon: Icons.directions_bike),
+  const Choice1(title: 'Boat', icon: Icons.directions_boat),
+  const Choice1(title: 'Bus', icon: Icons.directions_bus),
+  const Choice1(title: 'Train', icon: Icons.directions_railway),
+  const Choice1(title: 'Walk', icon: Icons.directions_walk),
+  // const Choice(title: 'News', icon: Icons.cake),
+];
